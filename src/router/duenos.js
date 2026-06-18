@@ -1,24 +1,24 @@
-import express from 'express'
-import Controlador from '../controlador/duenos.js'
+import express from "express";
+import Controlador from "../controlador/duenos.js";
 
 class Router {
-  #controlador = null
+  #controlador = null;
 
   constructor() {
-    this.#controlador = new Controlador()
+    this.#controlador = new Controlador();
   }
 
   config() {
-    const router = express.Router()
+    const router = express.Router();
 
-    router.get('/', this.#controlador.obtenerDuenos)
-    router.get('/:id', this.#controlador.obtenerDuenos)
-    router.post('/', this.#controlador.guardarDueno)
-    router.put('/:id', this.#controlador.actualizarDueno)
-    router.delete('/:id', this.#controlador.borrarDueno)
+    router.get("/", this.#controlador.obtenerDuenos);
+    router.get("/:id", this.#controlador.obtenerDuenos);
+    router.post("/", this.#controlador.guardarDueno);
+    router.put("/:id", this.#controlador.actualizarDueno);
+    router.delete("/:id", this.#controlador.borrarDueno);
 
-    return router
+    return router;
   }
 }
 
-export default Router
+export default Router;

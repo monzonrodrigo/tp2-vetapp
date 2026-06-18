@@ -1,78 +1,78 @@
-import Servicio from '../servicio/duenos.js'
+import Servicio from "../servicio/duenos.js";
 
 class Controlador {
-  #servicio = null
+  #servicio = null;
 
   constructor() {
-    this.#servicio = new Servicio()
+    this.#servicio = new Servicio();
   }
 
   obtenerDuenos = async (req, res) => {
     try {
-      const { id } = req.params
-      const duenos = await this.#servicio.obtenerDuenos(id)
+      const { id } = req.params;
+      const duenos = await this.#servicio.obtenerDuenos(id);
 
-      res.json(duenos)
+      res.json(duenos);
     } catch (error) {
       res.status(500).json({
         url: req.url,
         method: req.method,
-        error: error.message
-      })
+        error: error.message,
+      });
     }
-  }
+  };
 
   guardarDueno = async (req, res) => {
     try {
-      const datos = req.body
+      const datos = req.body;
 
       if (Object.keys(datos).length === 0) {
-        throw new Error('El cuerpo esta vacio')
+        throw new Error("El cuerpo esta vacio");
       }
 
-      const dueno = await this.#servicio.guardarDueno(datos)
+      const dueno = await this.#servicio.guardarDueno(datos);
 
-      res.json(dueno)
+      res.json(dueno);
     } catch (error) {
       res.status(500).json({
         url: req.url,
         method: req.method,
-        error: error.message
-      })
+        error: error.message,
+      });
     }
-  }
+  };
 
   actualizarDueno = async (req, res) => {
     try {
-      const { id } = req.params
-      const datos = req.body
+      const { id } = req.params;
+      const datos = req.body;
 
-      const dueno = await this.#servicio.actualizarDueno(id, datos)
+      const dueno = await this.#servicio.actualizarDueno(id, datos);
 
-      res.json(dueno)
+      res.json(dueno);
     } catch (error) {
       res.status(500).json({
         url: req.url,
         method: req.method,
-        error: error.message
-      })
+        error: error.message,
+      });
     }
-  }
+  };
 
   borrarDueno = async (req, res) => {
     try {
-      const { id } = req.params
-      const dueno = await this.#servicio.borrarDueno(id)
+      const { id } = req.params;
+      const dueno = await this.#servicio.borrarDueno(id);
 
-      res.json(dueno)
+      res.json(dueno);
     } catch (error) {
       res.status(500).json({
         url: req.url,
         method: req.method,
-        error: error.message
-      })
+        error: error.message,
+      });
     }
-  }
+  };
 }
 
-export default Controlador
+export default Controlador;

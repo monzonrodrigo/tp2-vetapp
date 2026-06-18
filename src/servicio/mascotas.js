@@ -1,40 +1,40 @@
-import Mascota from '../modelo/Mascota.js'
-import MascotasFactory from '../modelo/DAO/mascotasFactory.js'
-import config from '../config.js'
+import Mascota from "../modelo/Mascota.js";
+import MascotasFactory from "../modelo/DAO/mascotasFactory.js";
+import config from "../config.js";
 
 class Servicio {
-    #modelo = null
-    
-    constructor() {
-        this.#modelo = MascotasFactory.get(config.MODO_PERSISTENCIA)
-    }
+  #modelo = null;
 
-    obtenerMascotas = async id => {
-        if (id) return await this.#modelo.obtenerMascota(id)
-        return await this.#modelo.obtenerMascotas()
-    }
+  constructor() {
+    this.#modelo = MascotasFactory.get(config.MODO_PERSISTENCIA);
+  }
 
-    guardarMascota = async datos => {
-        const mascota = new Mascota(datos)
-        mascota.validar()
-        return await this.#modelo.guardarMascota(mascota.get())
-    }
+  obtenerMascotas = async (id) => {
+    if (id) return await this.#modelo.obtenerMascota(id);
+    return await this.#modelo.obtenerMascotas();
+  };
 
-    actualizarMascota = async (id, datos) => {
-        return await this.#modelo.actualizarMascota(id, datos)
-    }
+  guardarMascota = async (datos) => {
+    const mascota = new Mascota(datos);
+    mascota.validar();
+    return await this.#modelo.guardarMascota(mascota.get());
+  };
 
-    borrarMascota = async id => {
-        return await this.#modelo.borrarMascota(id)
-    }
+  actualizarMascota = async (id, datos) => {
+    return await this.#modelo.actualizarMascota(id, datos);
+  };
 
-    obtenerMascotasPorDueno = async dueno_id => {
-        return await this.#modelo.obtenerMascotasPorDueno(dueno_id)
-    }
+  borrarMascota = async (id) => {
+    return await this.#modelo.borrarMascota(id);
+  };
 
-    borrarMascotasPorDueno = async dueno_id => {
-        return await this.#modelo.borrarMascotasPorDueno(dueno_id)
-    }
+  obtenerMascotasPorDueno = async (dueno_id) => {
+    return await this.#modelo.obtenerMascotasPorDueno(dueno_id);
+  };
+
+  borrarMascotasPorDueno = async (dueno_id) => {
+    return await this.#modelo.borrarMascotasPorDueno(dueno_id);
+  };
 }
 
-export default Servicio
+export default Servicio;
