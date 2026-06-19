@@ -1,6 +1,6 @@
 import Turno from "../modelo/Turno.js";
 import TurnosFactory from "../modelo/DAO/turnosFactory.js";
-import WhatsAppService from "../services/whatsapp.js";
+import WhatsAppService from "../servicio/whatsapp.js";
 import config from "../config.js";
 class Servicio {
   #modelo = null;
